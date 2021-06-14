@@ -17,16 +17,54 @@ $(document).ready(function(){
     if( location.search === ""){
         $("table").hide(); //Oculta la tabla
     }
+    console.log(getUrlParameter('tipo'));
+    if(getUrlParameter('tipo') === "1"){
+        //PERMISO DIARIO
+        var trThead = '<tr>'+
+                            '<th>'+ "Tipo permiso" + '</th>' +
+                            '<th>'+ "Nombre" + '</th>' +
+                            '<th>'+ "Apellido" + '</th>' +
+                            '<th>'+ "Documento" + '</th>' +
+                            '<th>'+ "Desde" + '</th>' +
+                            '<th>'+ "Hasta" + '</th>' +
+                            '<th>'+ "Motivo" + '</th>' +
+                        '</tr>';
 
-    var tr ='<tr>'+
-                '<td>'+ getUrlParameter('permiso') + '</td>' +
-                '<td>'+ getUrlParameter('nombre') + '</td>' +
-                '<td>'+ getUrlParameter('apellido') + '</td>' +
-                '<td>'+ getUrlParameter('dni') + '</td>' +
-                '<td>'+ getUrlParameter('desde') + '</td>' +
-                '<td>'+ getUrlParameter('hasta') + '</td>' +
-                '<td>'+ getUrlParameter('motivo') + '</td>' +
-            '</tr>';
-    
+        var tr ='<tr>'+
+                    '<td>'+ getUrlParameter('permiso') + '</td>' +
+                    '<td>'+ getUrlParameter('nombre') + '</td>' +
+                    '<td>'+ getUrlParameter('apellido') + '</td>' +
+                    '<td>'+ getUrlParameter('dni') + '</td>' +
+                    '<td>'+ getUrlParameter('desde') + '</td>' +
+                    '<td>'+ getUrlParameter('hasta') + '</td>' +
+                    '<td>'+ getUrlParameter('motivo') + '</td>' +
+                '</tr>';
+    }else{
+        //PERMISO PERIODO
+        var trThead = '<tr>'+
+                            '<th>'+ "Tipo permiso" + '</th>' +
+                            '<th>'+ "Nombre" + '</th>' +
+                            '<th>'+ "Apellido" + '</th>' +
+                            '<th>'+ "Documento" + '</th>' +
+                            '<th>'+ "Desde" + '</th>' +
+                            '<th>'+ "Hasta" + '</th>' +
+                            '<th>'+ "Cant. días" + '</th>' +
+                            '<th>'+ "Rodado" + '</th>' +
+                        '</tr>';
+
+        var tr ='<tr>'+
+                        '<td>'+ getUrlParameter('permiso') + '</td>' +
+                        '<td>'+ getUrlParameter('nombre') + '</td>' +
+                        '<td>'+ getUrlParameter('apellido') + '</td>' +
+                        '<td>'+ getUrlParameter('dni') + '</td>' +
+                        '<td>'+ getUrlParameter('desde') + '</td>' +
+                        '<td>'+ getUrlParameter('hasta') + '</td>' +
+                        '<td>'+ getUrlParameter('cantDias') + '</td>' +
+                        '<td>'+ getUrlParameter('rodado') + '</td>' +
+                '</tr>';
+
+    }
+
+    $(".table>thead").append(trThead ); //Genero la tabla
     $(".table>tbody").append(tr); //Genero la tabla con los datos que obtengo de la URL
 });
